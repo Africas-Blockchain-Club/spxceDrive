@@ -117,10 +117,19 @@ contract Spxce {
         // }
 
         // require(isShared == false, "File Already Shared With Account.");
+        // Add the uid to the list of accessors for the file
         files[cid].accessors.push(uid);
-        users[uid].shared.push(
-            File(files[cid].owner, files[cid].cid, key, files[cid].accessors)
+
+        // Create a new File struct representing the shared file
+        File memory sharedFile = File(
+            files[cid].owner,
+            cid,
+            key,
+            files[cid].accessors
         );
+
+        // Add the shared file to the 'shared' array of the user identified by 'uid'
+        users[uid].shared.push(sharedFile);
     }
 
     modifier isUserExists(address uid) {

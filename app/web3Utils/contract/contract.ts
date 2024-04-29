@@ -4,7 +4,7 @@ import web3Instance from '../webInstance';
 const spxceContract = () => {
 	return new web3Instance.eth.Contract(
 		abi,
-		"0xA4d916b184c9c639435405Cb0D941e383Dd7bf96"
+		"0x46152A389675267a6A026656eB8042966d58838F"
 	)
 }
 
