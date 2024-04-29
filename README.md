@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# SpxceDrive
 
-First, run the development server:
+## Overview
+**SpxceDrive** facilitates decentralized file sharing and syncing using IPFS (InterPlanetary File System) and Scroll Vortex. It allows users to securely upload, share, and sync files without relying on a centralized server. The application utilizes Next.js for frontend development, Solidity smart contracts deployed on Scroll Vortex for file management, QuickNode for IPFS integration, and Tailwind CSS with DaisyUI for UI design. Social login functionality is enabled through dynamic.xyz.
+
+
+## Features
+
+- **Decentralized File Sharing :** Upload and share files securely using IPFS and Scroll Vortex.
+- **Syncing :** Real-time synchronization of files across multiple devices.
+- **Smart Contracts :** Ensure the integrity and authenticity of shared files through Solidity smart contracts deployed on Scroll Vortex.
+- **UI Design :** Clean and responsive UI design crafted with Tailwind CSS and DaisyUI.
+- **Social Login :** Seamlessly log in using social authentication provided by dynamic.xyz.
+
+
+## Tech Stack
+
+- **Next.js :** React framework for building server-side rendered (SSR) web applications.
+- **Solidity Smart Contract :** Deployed on Scroll Vortex to manage file integrity and authenticity.
+- **QuickNode :** Provides reliable and fast access to the IPFS network.
+- **Tailwind CSS :** Utility-first CSS framework for rapid UI development.
+- **DaisyUI (Dynamic.xyz) :** Offers components and utilities for building modern UIs.
+- **dynamic.xyz :** Enables social login functionality for enhanced user experience.
+ 
+
+
+## Local Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Luqxus/spxcedrive/
+```
+
+2. Install dependencies:
+
+ ```bash
+cd spxcedrive/
+
+npm install
+#or
+yarn install
+```
+
+3. Configure environment variables:
+ - Set up necessary environment variables for Scroll Vortex, QuickNode, and other configurations.
+
+4. Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open your browser and navigate to http://localhost:3000 to access the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Usage
+1. Sign up or log in using social login credentials.
+2. Upload files securely to the platform.
+3. Share files with others via generated links.
+4. Experience real-time syncing of files across devices.
+5. Enjoy the assurance of file integrity and authenticity ensured by smart contracts.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+This project is licensed under the MIT License.
