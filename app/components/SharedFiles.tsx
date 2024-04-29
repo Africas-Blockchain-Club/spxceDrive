@@ -90,7 +90,7 @@ const FileTile = (props: { name: string, size: any, type: string, cid: string, e
 				</td>
 			</td>
 			<td className="px-6 py-4">
-				<ShareButton cid={props.cid} encryptionKey={props.encryptionKey} />
+				{/* <ShareButton cid={props.cid} encryptionKey={props.encryptionKey} /> */}
 			</td>
 		</tr>
 	)
@@ -98,7 +98,7 @@ const FileTile = (props: { name: string, size: any, type: string, cid: string, e
 
 
 const SharedFiles = () => {
-	const [files, setFiles] = useState<Array<FileObject>>([]);
+	const [sharedfiles, setSharedfiles] = useState<Array<FileObject>>([]);
 
 	useEffect(() => {
 		getFiles();
@@ -108,23 +108,24 @@ const SharedFiles = () => {
 		try {
 			const accounts = await web3Instance.eth.requestAccounts();
 			const _files: Array<any> = await spxceContract().methods.getSharedFiles().call({ from: accounts[0] });
-
+			console.log(_files)
 			const filePromises = _files.map(async (fileItem) => {
+				console.log("File CID : ", fileItem)
 				const file = await ipfsgetFile(fileItem[1]);
-
+				console.log("A shared file : ", file)
 				return new FileObject(file.cid, fileItem[2], file.name, file.type, file.size, file.requestid);
 			});
 
 			const resolvedFiles: any = await Promise.all(filePromises);
 
-			setFiles(resolvedFiles);
+			setSharedfiles(resolvedFiles);
 		} catch (error) {
 			console.error('Error fetching files:', error);
 		}
 	};
 
 	const renderFile = () => {
-		return files.map((file, index) => (
+		return sharedfiles.map((file, index) => (
 			<FileTile name={file.name} size={file.size} type={file.type} cid={file.cid} encryptionKey={file.key} key={index} />
 		));
 	};

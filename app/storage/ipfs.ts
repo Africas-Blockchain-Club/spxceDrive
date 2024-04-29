@@ -23,6 +23,7 @@ export const ipfsUploadFile = async (file: File) => {
 
 
 export const ipfsgetFile = async (requestID: string) => {
+	console.log("RequestID in ipfs")
 	var myHeaders = new Headers();
 	myHeaders.append("x-api-key", "QN_ec36bc1e42ff4471861d96d7291f157b");
 
@@ -33,9 +34,9 @@ export const ipfsgetFile = async (requestID: string) => {
 	};
 
 	let response: Response | void = await  fetch(`https://api.quicknode.com/ipfs/rest/v1/pinning/${requestID}`, requestOptions)
-
+	console.log("Response : ", response);
 	let obj: any = JSON.parse(await response.text())
-	console.log(obj);
+	// console.log(obj);
 
 	return obj
 }

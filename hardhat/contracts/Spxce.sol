@@ -84,23 +84,26 @@ contract Spxce {
         address uid,
         string memory cid,
         string memory key
-    ) public isUserExists(uid) isFileExists(cid) {
-        bool isShared = false;
+    )
+        public
+        isUserExists(uid) //  isFileExists(cid)
+    //   isFileOwner(cid)
+    {
+        // bool isShared = false;
 
-        for (uint256 idx = 0; idx < users[uid].shared.length; idx++) {
-            if (
-                keccak256(bytes(users[uid].shared[idx].cid)) ==
-                keccak256(bytes(cid))
-            ) {
-                isShared = true;
-                break;
-            }
-        }
+        // for (uint256 idx = 0; idx < users[uid].shared.length; idx++) {
+        //     if (
+        //         keccak256(bytes(users[uid].shared[idx].cid)) ==
+        //         keccak256(bytes(cid))
+        //     ) {
+        //         isShared = true;
+        //         break;
+        //     }
+        // }
 
-        require(isShared == false, "File Already Shared With Account.");
+        // require(isShared == false, "File Already Shared With Account.");
 
-        File memory file = files[cid];
-        users[uid].shared.push(File(file.owner, file.cid, key));
+        users[uid].shared.push(File(msg.sender, cid, key));
     }
 
     modifier isUserExists(address uid) {
@@ -115,4 +118,10 @@ contract Spxce {
         );
         _;
     }
+
+    modifier isFileOwner(string memory cid) {
+        require(files[cid].owner == msg.sender);
+        _;
+    }
 }
+//

@@ -25,7 +25,7 @@ class FileObject {
 
 }
 
-const FileTile = (props: { name: string, size: any, type: string, cid: string, encryptionKey: string }) => {
+const FileTile = (props: { name: string, size: any, type: string, cid: string, encryptionKey: string, requestID: string }) => {
 
 	const download = async () => {
 		console.log("download")
@@ -90,7 +90,7 @@ const FileTile = (props: { name: string, size: any, type: string, cid: string, e
 				</td>
 			</td>
 			<td className="px-6 py-4">
-				<ShareButton cid={props.cid} encryptionKey={props.encryptionKey} />
+				<ShareButton requestID={props.requestID} encryptionKey={props.encryptionKey} />
 			</td>
 		</tr>
 	)
@@ -111,8 +111,9 @@ const Files = () => {
 
 			const filePromises = _files.map(async (fileItem) => {
 				const file = await ipfsgetFile(fileItem[1]);
+				console.log("Files Request ID : ", file)
 
-				return new FileObject(file.cid, fileItem[2], file.name, file.type, file.size, file.requestid);
+				return new FileObject(file.cid, fileItem[2], file.name, file.type, file.size, file.requestId);
 			});
 
 			const resolvedFiles: any = await Promise.all(filePromises);
@@ -125,7 +126,7 @@ const Files = () => {
 
 	const renderFile = () => {
 		return files.map((file, index) => (
-			<FileTile name={file.name} size={file.size} type={file.type} cid={file.cid} encryptionKey={file.key} key={index} />
+			<FileTile name={file.name} size={file.size} type={file.type} cid={file.cid} encryptionKey={file.key} requestID={file.requestID} key={index} />
 		));
 	};
 

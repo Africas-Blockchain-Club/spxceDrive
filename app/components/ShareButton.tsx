@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import spxceContract from "../web3Utils/contract/contract";
 import web3Instance from "../web3Utils/webInstance";
 
-const ShareButton = (props: { cid: string, encryptionKey: string }) => {
+const ShareButton = (props: { requestID: string, encryptionKey: string }) => {
 	// const [shareAccount, setShareAccount] = useState("");
 	const addressInputRef = useRef<HTMLInputElement>(null);
 
@@ -12,10 +12,10 @@ const ShareButton = (props: { cid: string, encryptionKey: string }) => {
 		const accounts = await web3Instance.eth.requestAccounts();
 		console.log("Account : ", accounts[0]);
 		const sharedAccount = addressInputRef.current?.value;
-		console.log("Share Account", sharedAccount);
-		console.log(props.cid);
-		console.log(props.encryptionKey);
-		await spxceContract().methods.shareFile(sharedAccount, props.cid, props.encryptionKey).send(
+		console.log("Shared Request ID", props.requestID);
+		// console.log(props.cid);
+		// console.log(props.encryptionKey);
+		await spxceContract().methods.shareFile(sharedAccount, props.requestID, props.encryptionKey).send(
 			{
 				from: accounts[0],
 				gasPrice: '1000000000', // Example gas price in wei (adjust as needed)
