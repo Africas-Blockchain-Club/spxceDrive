@@ -57,7 +57,7 @@ const FileTile = (props: { name: string, size: any, type: string, cid: string, e
 				<ShareButton requestID={props.requestID} encryptionKey={props.encryptionKey} />
 			</td>
 			<td>
-				<Peers />
+				<Peers cid={props.cid} peers={props.accessor} />
 			</td>
 		</tr>
 	)
@@ -79,6 +79,8 @@ const Files = () => {
 			const filePromises = _files.map(async (fileItem) => {
 				const file = await ipfsgetFile(fileItem[1]);
 				console.log("Files Request ID : ", file)
+
+				console.log("File Item From Contract : ", fileItem);
 
 				return new FileObject(file.cid, fileItem[2], file.name, file.type, file.size, file.requestId, fileItem[3]);
 			});

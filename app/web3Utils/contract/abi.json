@@ -44,6 +44,11 @@
 						"internalType": "string",
 						"name": "key",
 						"type": "string"
+					},
+					{
+						"internalType": "address[]",
+						"name": "accessors",
+						"type": "address[]"
 					}
 				],
 				"internalType": "struct Spxce.File[]",
@@ -74,6 +79,11 @@
 						"internalType": "string",
 						"name": "key",
 						"type": "string"
+					},
+					{
+						"internalType": "address[]",
+						"name": "accessors",
+						"type": "address[]"
 					}
 				],
 				"internalType": "struct Spxce.File[]",
