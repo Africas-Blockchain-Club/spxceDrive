@@ -3,6 +3,7 @@ import { useState } from "react";
 import web3Instance from "./web3Utils/webInstance";
 import spxceContract from "./web3Utils/contract/contract";
 import MainContainer from "./components/Main";
+import LandingPage from "./components/LandingPage";
 
 export default function Home() {
   // const [account, setAccount] = useState<string>();
@@ -42,7 +43,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {
         (isUser) ? <MainContainer />
-          : <div className="btn btn-primary" onClick={async () => { connect() }}>Connect</div>
+          : <LandingPage connect={connect} />
       }
     </main>
   );
