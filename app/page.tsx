@@ -23,7 +23,6 @@ export default function Home() {
 
   }
 
-
   const login = async (account: string) => {
     const result = await spxceContract().methods.isUser().call();
     console.log(result);

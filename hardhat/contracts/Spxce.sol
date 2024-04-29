@@ -1,21 +1,31 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.19;
 
 contract Spxce {
     struct User {
+        // user id [account address]
         address uid;
+        // owned files
         File[] files;
+        // files shared with this use [temporarily owned]
         File[] shared;
     }
 
     struct File {
+        // owner of this file
         address owner;
+        // ipfs cid pin
         string cid;
+        // encryption key | encrypted with the owners public key
         string key;
+        // users [addresses] that have access to this address
+        address[] accessors;
     }
 
+    // map of address to user
     mapping(address => User) users;
 
+    // map of file cid to file
     mapping(string => File) files;
 
     function getUser()
@@ -76,8 +86,13 @@ contract Spxce {
 
     function addFile(string calldata cid, string calldata key) public {
         users[msg.sender].uid = msg.sender;
-        users[msg.sender].files.push(File(msg.sender, cid, key));
-        files[cid] = File(msg.sender, cid, key);
+        address[] memory _accessors = new address[](0);
+
+        users[msg.sender].files.push(File(msg.sender, cid, key, _accessors));
+        // files[cid] = File(msg.sender, cid, key);
+        files[cid].owner = msg.sender;
+        files[cid].cid = cid;
+        files[cid].key = key;
     }
 
     function shareFile(
@@ -102,8 +117,10 @@ contract Spxce {
         // }
 
         // require(isShared == false, "File Already Shared With Account.");
-
-        users[uid].shared.push(File(msg.sender, cid, key));
+        files[cid].accessors.push(uid);
+        users[uid].shared.push(
+            File(files[cid].owner, files[cid].cid, key, files[cid].accessors)
+        );
     }
 
     modifier isUserExists(address uid) {
