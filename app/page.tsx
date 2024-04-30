@@ -5,6 +5,7 @@ import spxceContract from "./web3Utils/contract/contract";
 import MainContainer from "./components/Main";
 import LandingPage from "./components/LandingPage";
 
+
 export default function Home() {
   // const [account, setAccount] = useState<string>();
   const [isUser, setIsUser] = useState(false);
