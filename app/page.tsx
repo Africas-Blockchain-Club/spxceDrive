@@ -10,7 +10,7 @@ export default function Home() {
   const [isUser, setIsUser] = useState(false);
 
   const connect = async () => {
-    if (window.ethereum) {
+    if ((window as any).ethereum) {
       console.log("connect")
       web3Instance.eth.requestAccounts().then(async (accounts: Array<string>) => {
         // setAccount(accounts[0])
