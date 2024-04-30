@@ -104,19 +104,7 @@ contract Spxce {
         isUserExists(uid) //  isFileExists(cid)
     //   isFileOwner(cid)
     {
-        // bool isShared = false;
-
-        // for (uint256 idx = 0; idx < users[uid].shared.length; idx++) {
-        //     if (
-        //         keccak256(bytes(users[uid].shared[idx].cid)) ==
-        //         keccak256(bytes(cid))
-        //     ) {
-        //         isShared = true;
-        //         break;
-        //     }
-        // }
-
-        // require(isShared == false, "File Already Shared With Account.");
+        
         // Add the uid to the list of accessors for the file
         files[cid].accessors.push(uid);
 
@@ -127,6 +115,13 @@ contract Spxce {
             key,
             files[cid].accessors
         );
+
+        for (uint256 idx = 0; idx < users[msg.sender].files.length; idx++) {
+            if (keccak256(bytes(users[msg.sender].files[idx].cid)) == keccak256(bytes(cid))) {
+                users[msg.sender].files[idx].accessors.push(uid);
+                break;
+            }
+        }
 
         // Add the shared file to the 'shared' array of the user identified by 'uid'
         users[uid].shared.push(sharedFile);

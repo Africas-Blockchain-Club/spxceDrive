@@ -6,6 +6,8 @@ const ShareButton = (props: { requestID: string, encryptionKey: string }) => {
 	// const [shareAccount, setShareAccount] = useState("");
 	const addressInputRef = useRef<HTMLInputElement>(null);
 
+	console.log("Share button Props : {", props.requestID, "}" );
+
 
 	const share = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();

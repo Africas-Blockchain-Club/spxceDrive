@@ -4,14 +4,14 @@ import web3Instance from '../webInstance';
 const spxceContract = () => {
 	return new web3Instance.eth.Contract(
 		abi,
-		"0x46152A389675267a6A026656eB8042966d58838F"
+		"0x26d1959dDd469805A15102822738C505c6b7b712"
 	)
 }
 
 export default spxceContract;
 
 
-const account = "0x012...bc"
+// const account = "0x012...bc"
 
 // Key is returned as base64
 // const keyB64 = await window.ethereum.request({

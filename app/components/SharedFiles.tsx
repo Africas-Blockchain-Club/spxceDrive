@@ -70,12 +70,13 @@ const SharedFiles = () => {
 		try {
 			const accounts = await web3Instance.eth.requestAccounts();
 			const _files: Array<any> = await spxceContract().methods.getSharedFiles().call({ from: accounts[0] });
-			console.log(_files);
+			// console.log(_files);
+			console.log("contract shared files in Files comp : ", _files);
 			const filePromises = _files.map(async (fileItem) => {
-				console.log("File CID : ", fileItem);
+				// console.log("File CID : ", fileItem);
 				const file = await ipfsgetFile(fileItem[1]);
-				console.log("A shared file : ", file);
-				return new FileObject(file.cid, fileItem[2], file.name, file.type, file.size, file.requestid, file[3]);
+				// console.log("A shared file : ", file);
+				return new FileObject(file.cid, fileItem[2], file.name, file.type, file.size, file.requestid, fileItem[3]);
 			});
 
 			const resolvedFiles: any = await Promise.all(filePromises);
@@ -87,9 +88,12 @@ const SharedFiles = () => {
 	};
 
 	const renderFile = () => {
-		return sharedfiles.map((file, index) => (
-			<FileTile name={file.name} size={file.size} type={file.type} cid={file.cid} encryptionKey={file.key} key={index} accessors={file.accessors} />
-		));
+		const _files: any = []
+		sharedfiles.map((file, index) => {
+			_files.push(<FileTile name={file.name} size={file.size} type={file.type} cid={file.cid} encryptionKey={file.key} key={index} accessors={file.accessors} />)
+		});
+
+		return _files;
 	};
 
 	return (

@@ -29,7 +29,9 @@ class FileObject {
 }
 
 const FileTile = (props: { name: string, size: any, type: string, cid: string, encryptionKey: string, requestID: string, accessor: string[] }) => {
-
+	console.log(props.name);
+	console.log(props.requestID);
+	
 	const download = async () => {
 		console.log("download")
 		await ipfsDownloadFile(props.cid, props.name);
@@ -75,12 +77,13 @@ const Files = () => {
 		try {
 			const accounts = await web3Instance.eth.requestAccounts();
 			const _files: Array<any> = await spxceContract().methods.getFiles().call({ from: accounts[0] });
-
+			console.log("contract files in Files comp : ", _files);
 			const filePromises = _files.map(async (fileItem) => {
 				const file = await ipfsgetFile(fileItem[1]);
-				console.log("Files Request ID : ", file)
+				
+				// console.log("Files Request ID : ", file)
 
-				console.log("File Item From Contract : ", fileItem);
+				// console.log("File Item From Contract : ", fileItem);
 
 				return new FileObject(file.cid, fileItem[2], file.name, file.type, file.size, file.requestId, fileItem[3]);
 			});
