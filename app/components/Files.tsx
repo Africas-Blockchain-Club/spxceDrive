@@ -31,7 +31,7 @@ class FileObject {
 const FileTile = (props: { name: string, size: any, type: string, cid: string, encryptionKey: string, requestID: string, accessor: string[] }) => {
 	console.log(props.name);
 	console.log(props.requestID);
-	
+
 	const download = async () => {
 		console.log("download")
 		await ipfsDownloadFile(props.cid, props.name);
@@ -80,7 +80,7 @@ const Files = () => {
 			console.log("contract files in Files comp : ", _files);
 			const filePromises = _files.map(async (fileItem) => {
 				const file = await ipfsgetFile(fileItem[1]);
-				
+
 				// console.log("Files Request ID : ", file)
 
 				// console.log("File Item From Contract : ", fileItem);
