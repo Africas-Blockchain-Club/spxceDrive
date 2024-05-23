@@ -40,7 +40,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 relative w-full h-screen ">
+    <main className="flex max-h-screen h-screen flex-col items-center font-mono justify-between p-24 relative w-full  bg-gradient-to-r from-violet-200 to-pink-200">
       {
         (isUser) ? <MainContainer />
           : <LandingPage connect={connect} />

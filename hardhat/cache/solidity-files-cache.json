@@ -1,0 +1,77 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/luqus/solidity/spxce/spxce/hardhat/contracts/Lock.sol": {
+      "lastModificationDate": 1714298176013,
+      "contentHash": "dacf0d5cb5b45dc83086de5bc1c26c2c",
+      "sourceName": "contracts/Lock.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "Lock"
+      ]
+    },
+    "/home/luqus/solidity/spxce/spxce/hardhat/contracts/Spxce.sol": {
+      "lastModificationDate": 1714346847671,
+      "contentHash": "858e353d7a7b2b019f88e77bf0c5b68c",
+      "sourceName": "contracts/Spxce.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "Spxce"
+      ]
+    }
+  }
+}

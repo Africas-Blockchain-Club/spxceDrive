@@ -4,42 +4,35 @@ import Features from "./features";
 import Footer from "./ui/footer";
 
 
-const ConnectButton = (props: {connect: Function}) => {
+const ConnectButton = (props: { connect: Function }) => {
     return (
         <div className="btn btn-primary" onClick={async () => { props.connect() }}>Connect</div>
     );
 }
 
-{/* <ConnectButton  connect={props.connect} />     */}
-
-// return (
-//     <section className='bg-indigo-700 py-20 mb-4'>
-//       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center'>
-//         <div className='text-center'>
-//           <h1 className='text-4xl font-extrabold text-white sm:text-5xl md:text-6xl'>
-//             {"Become a React Dev"}
-//           </h1>
-//           <p className='my-4 text-xl text-white'>{"Find the React job that fits your skill set"}</p>
-//           <ConnectButton  connect={props.connect} />
-//         </div>
-//       </div>
-//     </section>
-//   );
 
 
-
-const LandingPage = (props: {connect: Function}) => {
+const LandingPage = (props: { connect: Function }) => {
 
     return (
-        <>
-        <Hero connect={props.connect}/>
-        <Features />
-        {/* <Footer /> */}
-    
-      </>
+        <div className=" flex justify-between items-center">
+
+            <section className="w-1/2 bg-blue">
+                <p className="text-6xl text-slate-900 font-bold">Decentralized File Sharing</p>
+                <p className="text-lg py-4  text-slate-600">In a world where centralized control over data has become the norm, we offer a paradigm shift towards user empowerment and data sovereignty.</p>
+                <ConnectButton connect={props.connect} />
+
+            </section>
+
+            <img
+                src="serverroom.png"
+                className="w-2/5">
+            </img>
+
+        </div>
     );
 }
 
 
-export default  LandingPage;
+export default LandingPage;
 
